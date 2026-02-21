@@ -1,0 +1,31 @@
+.aboutText {
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.statItem {
+  border-top: 1px solid currentColor;
+  padding-top: 1rem;
+}
+
+.statNumber {
+  font-family: "Newsflash BB", sans-serif;
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+}

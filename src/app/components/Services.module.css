@@ -1,0 +1,50 @@
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.serviceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.serviceItem:hover {
+  padding-left: 2rem;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.serviceTitle {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 400;
+}
+
+.serviceDesc {
+  max-width: 40%;
+  text-align: right;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.serviceItem:hover .serviceDesc {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .serviceItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .serviceDesc {
+    max-width: 100%;
+    text-align: left;
+  }
+}

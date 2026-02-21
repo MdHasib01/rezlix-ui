@@ -1,0 +1,58 @@
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.teamMember {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+  background-color: #ccc; /* Placeholder */
+}
+
+.teamMember:hover .memberImage {
+  filter: grayscale(100%);
+}
+
+.memberInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  color: #000;
+}
+
+.teamMember:hover .memberInfo {
+  transform: translateY(0);
+}
+
+.memberName {
+  font-family: "Newsflash BB", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.memberRole {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
