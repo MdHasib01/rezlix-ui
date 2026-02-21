@@ -5,7 +5,7 @@ import styles from "./Portfolio.module.css";
 const projects = [
   { id: 1, title: "Urban Oasis", category: "Residential", img: "/img1.jpg" },
   { id: 2, title: "Skyline Tower", category: "Commercial", img: "/img2.jpg" },
-  { id: 3, title: "Eco Center", category: "Public", img: "/img3.jpg" },
+  { id: 3, title: "Eco Center", category: "Public", img: "/img3.png" },
   { id: 4, title: "Modern Villa", category: "Residential", img: "/img1.jpg" },
 ];
 

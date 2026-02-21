@@ -1,65 +1,135 @@
-.heroContent {
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* Base styles for layers */
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-  width: 100%;
-  padding-top: 4rem; /* For header */
+  align-items: center;
+  overflow: hidden;
 }
 
-.heroTitle {
-  font-size: clamp(4rem, 12vw, 15rem);
-  line-height: 0.85;
-  margin-bottom: 2rem;
-  opacity: 0; /* Animated in */
-  transform: translateY(50px);
+/* Bottom Layer (Secondary) */
+.layerSecondary {
+  z-index: 1;
+  background-color: #1a1a1a;
+  color: #ffffff; /* Text color for secondary layer */
 }
 
-.heroSubtitle {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  max-width: 600px;
-  margin-bottom: 3rem;
-  opacity: 0; /* Animated in */
-  transform: translateY(30px);
-}
-
-.heroImage {
+.bgImage {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 50%;
+  left: 0;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  pointer-events: none;
+}
+
+.layerSecondary .bgImage {
+  opacity: 0.6;
+}
+
+/* Top Layer (Primary) */
+.layerPrimary {
+  z-index: 2;
+  isolation: isolate; /* Crucial for mix-blend-mode */
+  background-color: #f0f0f0;
+  color: #000000; /* Text color for primary layer */
+}
+
+.layerPrimary .bgImage {
   opacity: 0.8;
-  mask-image: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
 }
 
-.cta {
-  padding: 1rem 2rem;
-  border: 1px solid currentColor;
-  border-radius: 2rem;
+/* Content Layout */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through to potential interactive elements if needed, but here mostly just visual */
+}
+
+/* Typography */
+.title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  line-height: 0.9;
   text-transform: uppercase;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
-.cta:hover {
-  background-color: var(--color-text);
-  color: var(--color-bg);
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
 }
 
+.ctaButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid currentColor;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto; /* Re-enable pointer events for the button */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+}
+
+/* Eraser / Reveal Mechanism */
+.revealMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px; /* Base size */
+  height: 400px;
+  background-color: #000;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: destination-out; /* The magic: erases the primary layer */
+  z-index: 100;
+  /* Start centered or hidden */
+  transform: translate(-50%, -50%) scale(0); 
+  filter: blur(40px); /* Soft edge */
+  will-change: transform, border-radius;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .heroImage {
-    width: 100%;
-    opacity: 0.3;
-    mask-image: none;
+  .revealMask {
+    width: 250px;
+    height: 250px;
+    filter: blur(20px);
+  }
+  
+  .title {
+    font-size: clamp(2.5rem, 12vw, 5rem);
   }
 }
