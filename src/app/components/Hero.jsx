@@ -5,7 +5,7 @@ import styles from "./Hero.module.css";
 
 export default function Hero() {
   const containerRef = useRef(null);
-  const maskRef = useRef(null);
+  const primaryLayerRef = useRef(null);
 
   // Refs for entrance animations
   const titlePrimaryRef = useRef(null);
@@ -17,70 +17,52 @@ export default function Hero() {
 
   useEffect(() => {
     const container = containerRef.current;
-    const mask = maskRef.current;
+    const primaryLayer = primaryLayerRef.current;
 
-    if (!container || !mask) return;
+    if (!container || !primaryLayer) return;
 
     // --- 1. Mouse Tracking & Reveal Effect ---
-    // Initial state
-    gsap.set(mask, {
-      xPercent: -50,
-      yPercent: -50,
-      scale: 0,
+    gsap.set(primaryLayer, {
+      "--mask-x": "50%",
+      "--mask-y": "50%",
+      "--mask-radius": "0px",
     });
 
-    const xTo = gsap.quickTo(mask, "x", { duration: 0.6, ease: "power3.out" });
-    const yTo = gsap.quickTo(mask, "y", { duration: 0.6, ease: "power3.out" });
+    const setMaskX = gsap.quickSetter(primaryLayer, "--mask-x", "px");
+    const setMaskY = gsap.quickSetter(primaryLayer, "--mask-y", "px");
+    let revealed = false;
 
     const handleMouseMove = (e) => {
       const rect = container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      xTo(x);
-      yTo(y);
+      setMaskX(x);
+      setMaskY(y);
 
-      // Reveal on first move
-      gsap.to(mask, { scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+      if (!revealed) {
+        revealed = true;
+        gsap.to(primaryLayer, {
+          "--mask-radius": "220px",
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        });
+      }
     };
 
     const handleMouseLeave = () => {
-      gsap.to(mask, { scale: 0, duration: 0.5, ease: "power3.in" });
+      gsap.to(primaryLayer, {
+        "--mask-radius": "0px",
+        duration: 0.5,
+        ease: "power3.in",
+        onComplete: () => {
+          revealed = false;
+        },
+      });
     };
 
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseLeave);
-
-    // --- 2. Organic Shape Animation ---
-    // Continuous morphing of the mask shape using border-radius
-    let organicTimeline;
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (!prefersReducedMotion) {
-      organicTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-
-      organicTimeline
-        .to(mask, {
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          duration: 4,
-          ease: "sine.inOut",
-        })
-        .to(mask, {
-          borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%",
-          duration: 4,
-          ease: "sine.inOut",
-        })
-        .to(mask, {
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%", // Back to startish
-          duration: 4,
-          ease: "sine.inOut",
-        });
-    } else {
-      // Static comfortable shape for reduced motion
-      gsap.set(mask, { borderRadius: "50%" });
-    }
 
     // --- 3. Entrance Animations ---
     const tl = gsap.timeline({ delay: 0.2 });
@@ -103,7 +85,6 @@ export default function Hero() {
     return () => {
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseleave", handleMouseLeave);
-      if (organicTimeline) organicTimeline.kill();
       tl.kill();
     };
   }, []);
@@ -138,7 +119,10 @@ export default function Hero() {
         Layer 2: Primary (Top)
         Visible by default. Contains the "mask" that cuts through it.
       */}
-      <div className={`${styles.layer} ${styles.layerPrimary}`}>
+      <div
+        className={`${styles.layer} ${styles.layerPrimary}`}
+        ref={primaryLayerRef}
+      >
         <img
           src="/img1.jpg"
           alt="Primary Background"
@@ -156,9 +140,6 @@ export default function Hero() {
             View Projects
           </a>
         </div>
-
-        {/* The "Eraser" Mask */}
-        <div ref={maskRef} className={styles.revealMask}></div>
       </div>
     </section>
   );

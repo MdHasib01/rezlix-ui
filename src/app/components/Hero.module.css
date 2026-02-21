@@ -3,7 +3,6 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #000;
 }
 
 /* Base styles for layers */
@@ -44,9 +43,28 @@
 /* Top Layer (Primary) */
 .layerPrimary {
   z-index: 2;
-  isolation: isolate; /* Crucial for mix-blend-mode */
   background-color: #f0f0f0;
   color: #000000; /* Text color for primary layer */
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mask-x, 50%) var(--mask-y, 50%),
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) var(--mask-radius, 0px),
+    rgba(0, 0, 0, 1) calc(var(--mask-radius, 0px) + 60px),
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: radial-gradient(
+    circle at var(--mask-x, 50%) var(--mask-y, 50%),
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) var(--mask-radius, 0px),
+    rgba(0, 0, 0, 1) calc(var(--mask-radius, 0px) + 60px),
+    rgba(0, 0, 0, 1) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
 }
 
 .layerPrimary .bgImage {
@@ -96,39 +114,18 @@
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto; /* Re-enable pointer events for the button */
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .ctaButton:hover {
   transform: scale(1.05);
 }
 
-/* Eraser / Reveal Mechanism */
-.revealMask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px; /* Base size */
-  height: 400px;
-  background-color: #000;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: destination-out; /* The magic: erases the primary layer */
-  z-index: 100;
-  /* Start centered or hidden */
-  transform: translate(-50%, -50%) scale(0); 
-  filter: blur(40px); /* Soft edge */
-  will-change: transform, border-radius;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .revealMask {
-    width: 250px;
-    height: 250px;
-    filter: blur(20px);
-  }
-  
   .title {
     font-size: clamp(2.5rem, 12vw, 5rem);
   }
