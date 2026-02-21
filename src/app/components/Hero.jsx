@@ -64,7 +64,6 @@ export default function Hero() {
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseLeave);
 
-    // --- 3. Entrance Animations ---
     const tl = gsap.timeline({ delay: 0.2 });
 
     const elements = [
@@ -103,7 +102,7 @@ export default function Hero() {
         />
         <div className={styles.content}>
           <h1 ref={titleSecondaryRef} className={styles.title}>
-            Form <br /> & Function
+            Form <br /> &amp; Function
           </h1>
           <p ref={subtitleSecondaryRef} className={styles.subtitle}>
             We create spaces that inspire, endure, and elevate the human
@@ -130,7 +129,7 @@ export default function Hero() {
         />
         <div className={styles.content}>
           <h1 ref={titlePrimaryRef} className={styles.title}>
-            Form <br /> & Function
+            Form <br /> &amp; Function
           </h1>
           <p ref={subtitlePrimaryRef} className={styles.subtitle}>
             We create spaces that inspire, endure, and elevate the human

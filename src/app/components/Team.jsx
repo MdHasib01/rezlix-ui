@@ -6,14 +6,14 @@ const team = [
     id: 1,
     name: "Sarah Jenkins",
     role: "Principal Architect",
-    img: "/img2.jpg",
+    img: "/people1.png",
   }, // Reusing images
-  { id: 2, name: "David Chen", role: "Design Director", img: "/img3.png" },
+  { id: 2, name: "David Chen", role: "Design Director", img: "/people2.png" },
   {
     id: 3,
     name: "Elena Rodriguez",
     role: "Senior Architect",
-    img: "/img1.jpg",
+    img: "/people3.png",
   },
 ];
 
