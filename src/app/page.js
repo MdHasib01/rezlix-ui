@@ -10,10 +10,13 @@ import Header from "./components/Header";
 import CustomCursor from "./components/CustomCursor";
 import ProgressBar from "./components/ProgressBar";
 import Hero from "./components/Hero";
+import HorizontalShowcase from "./components/HorizontalShowcase";
 import Portfolio from "./components/Portfolio";
 import Services from "./components/Services";
 import About from "./components/About";
 import Team from "./components/Team";
+import SofaShowroom from "./components/SofaShowroom";
+import HouseModel from "./components/HouseModel";
 import Contact from "./components/Contact";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,6 +42,8 @@ export default function Home() {
       const sections = document.querySelectorAll("section");
 
       sections.forEach((section, index) => {
+        if (section.dataset.skipTilt === "true") return;
+
         const container = section.querySelector(".container");
 
         if (!container) return;
@@ -80,6 +85,9 @@ export default function Home() {
 
       <main ref={containerRef}>
         <Hero />
+        <HorizontalShowcase />
+        <SofaShowroom />
+        <HouseModel />
         <Portfolio />
         <Services />
         <About />
@@ -93,8 +101,8 @@ export default function Home() {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "#000",
-              color: "#fff",
+              backgroundColor: "transparent",
+              color: "var(--color-text)",
             }}
           >
             <h2>REZLIX &copy; 2026</h2>

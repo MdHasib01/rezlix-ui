@@ -24,6 +24,9 @@ export default function Header() {
         <Link href="/">REZLIX</Link>
       </div>
       <nav className={styles.nav}>
+        <a href="#visions" onClick={(e) => handleScroll(e, "#visions")}>
+          Visions
+        </a>
         <a href="#work" onClick={(e) => handleScroll(e, "#work")}>
           Work
         </a>
@@ -35,6 +38,12 @@ export default function Header() {
         </a>
         <a href="#team" onClick={(e) => handleScroll(e, "#team")}>
           Team
+        </a>
+        <a href="#showroom" onClick={(e) => handleScroll(e, "#showroom")}>
+          Showroom
+        </a>
+        <a href="#house" onClick={(e) => handleScroll(e, "#house")}>
+          House
         </a>
         <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>
           Contact

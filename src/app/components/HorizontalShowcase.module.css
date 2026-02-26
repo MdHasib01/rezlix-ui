@@ -1,0 +1,182 @@
+.section {
+  position: relative;
+  height: 100vh;
+  background: radial-gradient(1200px 600px at 20% 20%, rgba(0, 245, 255, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 80% 40%, rgba(167, 97, 255, 0.18), transparent 55%),
+    linear-gradient(180deg, #07070b 0%, #05060a 100%);
+  color: #eef2ff;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 7vw 4vw 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.headerRow {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.kicker {
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.title {
+  margin-top: 0.75rem;
+  text-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
+}
+
+.lede {
+  max-width: 52ch;
+  opacity: 0.85;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
+
+.track {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  height: min(64vh, 640px);
+  will-change: transform;
+}
+
+.panel {
+  flex: 0 0 clamp(320px, 38vw, 620px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(9, 10, 16, 0.5);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.panelMedia {
+  position: relative;
+  overflow: hidden;
+}
+
+.panelMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  filter: contrast(1.08) saturate(1.08);
+}
+
+.panelOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 72%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.panelBody {
+  padding: 1.25rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 245, 255, 0.35);
+  background: rgba(0, 245, 255, 0.08);
+  color: #c6fbff;
+}
+
+.panelTitle {
+  font-size: clamp(1.6rem, 2.3vw, 2.6rem);
+  letter-spacing: 0.06em;
+}
+
+.panelMeta {
+  opacity: 0.85;
+}
+
+.panelCtas {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.panelCtas a {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.panelCtas a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.85);
+  transition: width 0.25s ease;
+}
+
+.panelCtas a:hover::after {
+  width: 100%;
+}
+
+.hint {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.hintDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 245, 255, 0.9);
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .track {
+    height: 62vh;
+  }
+}
+

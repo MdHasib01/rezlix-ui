@@ -53,7 +53,7 @@ export default function CustomCursor() {
         gsap.to(cursor, { scale: 0, duration: 0.3 });
         gsap.to(follower, {
           scale: 1.5,
-          backgroundColor: "rgba(188, 71, 73, 0.2)",
+          backgroundColor: "rgba(0, 245, 255, 0.18)",
           borderColor: "transparent",
           duration: 0.3,
         });
@@ -68,11 +68,11 @@ export default function CustomCursor() {
         });
       }
     } else {
-      gsap.to(cursor, { scale: 1, backgroundColor: "#bc4749", duration: 0.3 });
+      gsap.to(cursor, { scale: 1, backgroundColor: "#00f5ff", duration: 0.3 });
       gsap.to(follower, {
         scale: 1,
         backgroundColor: "transparent",
-        borderColor: "#bc4749",
+        borderColor: "#00f5ff",
         mixBlendMode: "normal",
         duration: 0.3,
       });

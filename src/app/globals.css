@@ -2,17 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 :root {
-  /* Minimalist Palette */
-  --color-bg: #f4f4f4;
-  --color-text: #1a1a1a;
-  --color-accent: #bc4749;
-  --color-secondary: #8e9487;
+  /* Futuristic Architectural Palette */
+  --color-bg: #05060a;
+  --color-text: #eef2ff;
+  --color-accent: #00f5ff; /* neon cyan */
+  --color-secondary: #a761ff; /* electric violet */
 
-  /* Section Backgrounds for variety */
-  --bg-1: #ffffff;
-  --bg-2: #e0e0e0;
-  --bg-3: #1a1a1a; /* Dark section */
-  --text-on-dark: #ffffff;
+  /* Section Backgrounds */
+  --bg-1: #07070b;
+  --bg-2: #0b0d14;
+  --bg-3: #05060a;
+  --text-on-dark: #eef2ff;
 }
 
 ::-webkit-scrollbar {
@@ -136,6 +136,19 @@ section.team .container {
 section.contact .container {
   background-color: var(--bg-2);
   color: var(--color-text);
+}
+
+/* Futuristic section backdrops for legacy sections */
+section.portfolio,
+section.services,
+section.about,
+section.team,
+section.contact,
+section.footer {
+  background:
+    radial-gradient(900px 520px at 8% 12%, rgba(0, 245, 255, 0.16), transparent 55%),
+    radial-gradient(900px 520px at 92% 72%, rgba(167, 97, 255, 0.16), transparent 55%),
+    linear-gradient(180deg, #05060a 0%, #07070b 100%);
 }
 
 /* Utilities */

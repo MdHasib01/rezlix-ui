@@ -29,10 +29,11 @@
   left: 0;
   width: 100%;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(9, 10, 16, 0.78);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   transform: translateY(100%);
   transition: transform 0.3s ease;
-  color: #000;
+  color: #eef2ff;
 }
 
 .teamMember:hover .memberInfo {
