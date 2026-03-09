@@ -197,6 +197,61 @@ export default function SodaCanExperience() {
 
       const stickyHeight = window.innerHeight;
 
+      // --- Text Animations ---
+      const sections = containerRef.current.querySelectorAll(
+        `.${styles.section}`,
+      );
+      sections.forEach((section) => {
+        const title = section.querySelector("h1, h2");
+        const paragraph = section.querySelector("p");
+        const tags = section.querySelector(`.${styles.tags}`);
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+
+        if (title) {
+          tl.from(title, {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          });
+        }
+
+        if (tags) {
+          tl.from(
+            tags.children,
+            {
+              y: 20,
+              opacity: 0,
+              stagger: 0.1,
+              duration: 0.8,
+              ease: "power2.out",
+            },
+            "-=0.6",
+          );
+        }
+
+        if (paragraph) {
+          tl.from(
+            paragraph,
+            {
+              y: 30,
+              opacity: 0,
+              duration: 1,
+              ease: "power3.out",
+            },
+            "-=0.8",
+          );
+        }
+      });
+
       // Reset model when scrolling back to top
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -274,8 +329,8 @@ export default function SodaCanExperience() {
         <DotGrid
           dotSize={4}
           gap={30}
-          baseColor="rgba(82, 39, 255, 0.4)"
-          activeColor="rgba(82, 39, 255, 1)"
+          baseColor="rgba(255, 255, 255, 0.1)"
+          activeColor="rgba(255, 255, 255, 0.3)"
         />
       </div>
       <div ref={canvasRef} className={styles.modelCanvas} />
@@ -328,7 +383,7 @@ export default function SodaCanExperience() {
       >
         <div className={styles.scanInfo}>
           <div className={styles.productId}>
-            <h2>#ARCH-2024</h2>
+            <h2>#REZ-2026</h2>
           </div>
           <div className={styles.productDescription}>
             <p>Visionary Architectural Design</p>
