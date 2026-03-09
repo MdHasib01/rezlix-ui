@@ -22,15 +22,23 @@ const throttle = (func, limit) => {
 
 function parseColor(color) {
   if (color.startsWith("rgb")) {
-    const m = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-    if (m) return { r: parseInt(m[1]), g: parseInt(m[2]), b: parseInt(m[3]) };
+    const m = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    if (m) {
+      return {
+        r: parseInt(m[1]),
+        g: parseInt(m[2]),
+        b: parseInt(m[3]),
+        a: m[4] ? parseFloat(m[4]) : 1,
+      };
+    }
   }
   const m = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-  if (!m) return { r: 0, g: 0, b: 0 };
+  if (!m) return { r: 0, g: 0, b: 0, a: 1 };
   return {
     r: parseInt(m[1], 16),
     g: parseInt(m[2], 16),
     b: parseInt(m[3], 16),
+    a: 1,
   };
 }
 
@@ -145,7 +153,8 @@ const DotGrid = ({
           const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
           const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
           const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
-          style = `rgb(${r},${g},${b})`;
+          const a = baseRgb.a + (activeRgb.a - baseRgb.a) * t;
+          style = `rgba(${r},${g},${b},${a})`;
         }
 
         ctx.save();
