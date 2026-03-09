@@ -59,15 +59,10 @@ export default function HorizontalShowcase() {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
 
-      const refresh = () => ScrollTrigger.refresh();
-      window.addEventListener("resize", refresh);
-
       return () => {
-        window.removeEventListener("resize", refresh);
         tween?.scrollTrigger?.kill();
         tween?.kill();
       };

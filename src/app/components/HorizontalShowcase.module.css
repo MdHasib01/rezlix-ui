@@ -57,13 +57,15 @@
 .track {
   display: flex;
   gap: 2rem;
-  align-items: stretch;
+  align-items: center; /* Center vertically */
   height: min(64vh, 640px);
   will-change: transform;
 }
 
 .panel {
-  flex: 0 0 clamp(320px, 38vw, 620px);
+  flex: 0 0 620px; /* Fixed width */
+  width: 620px; /* Fixed width */
+  height: 400px; /* Fixed height */
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
