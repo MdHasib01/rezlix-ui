@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
+import DotGrid from "./DotGrid";
 import styles from "./SodaCanExperience.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -277,6 +278,14 @@ export default function SodaCanExperience() {
 
   return (
     <div ref={containerRef} className={styles.experienceContainer}>
+      <div className={styles.backgroundContainer}>
+        <DotGrid
+          dotSize={4}
+          gap={30}
+          baseColor="rgba(82, 39, 255, 0.4)"
+          activeColor="rgba(82, 39, 255, 1)"
+        />
+      </div>
       <div ref={canvasRef} className={styles.modelCanvas} />
       <audio ref={scanSoundRef} src="/can3d/scan-sfx.mp3" />
 
