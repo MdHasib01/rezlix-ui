@@ -1,21 +1,32 @@
 .section {
   position: relative;
   height: 100vh;
-  background: radial-gradient(1200px 600px at 20% 20%, rgba(0, 245, 255, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 80% 40%, rgba(167, 97, 255, 0.18), transparent 55%),
+  background:
+    radial-gradient(
+      1200px 600px at 20% 20%,
+      rgba(0, 245, 255, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 500px at 80% 40%,
+      rgba(167, 97, 255, 0.18),
+      transparent 55%
+    ),
     linear-gradient(180deg, #07070b 0%, #05060a 100%);
   color: #eef2ff;
 }
 
-.bgGrid {
+.backgroundContainer {
   position: absolute;
   inset: 0;
-  opacity: 0.55;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  mask-image: radial-gradient(
+    circle at 50% 40%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
 }
 
 .viewport {
@@ -94,7 +105,12 @@
 .panelOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 72%, rgba(0, 0, 0, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.65) 72%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
 }
 
 .panelBody {
@@ -181,4 +197,3 @@
     height: 62vh;
   }
 }
-

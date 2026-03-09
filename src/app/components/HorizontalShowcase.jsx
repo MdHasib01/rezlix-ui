@@ -1,6 +1,7 @@
 "use client";
 import Tilt from "react-parallax-tilt";
 import { useRef } from "react";
+import RippleGrid from "../../component/RippleGrid";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -78,7 +79,18 @@ export default function HorizontalShowcase() {
       data-skip-tilt="true"
       data-skip-pin="true"
     >
-      <div className={styles.bgGrid} aria-hidden="true" />
+      <div className={styles.backgroundContainer}>
+        <RippleGrid
+          enableRainbow={false}
+          gridColor="#ffffff"
+          rippleIntensity={0.05}
+          gridSize={10}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.8}
+        />
+      </div>
       <div className={styles.viewport} ref={viewportRef}>
         <div className={styles.headerRow}>
           <div>
