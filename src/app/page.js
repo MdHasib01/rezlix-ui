@@ -94,7 +94,7 @@ export default function Home() {
 
       <main ref={containerRef}>
         <SodaCanExperience />
-        <Hero />
+        {/* <Hero /> */}
         <HorizontalShowcase />
         <SofaShowroom />
         <HouseModel />

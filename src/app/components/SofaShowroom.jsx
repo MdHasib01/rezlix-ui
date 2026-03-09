@@ -2,6 +2,7 @@
 
 import styles from "./SofaShowroom.module.css";
 import ModelViewer from "./ModelViewer";
+import RippleGrid from "../../component/RippleGrid";
 
 const sofaModels = [
   {
@@ -29,6 +30,18 @@ export default function SofaShowroom() {
       data-skip-tilt="true"
       data-skip-pin="true"
     >
+      <div className={styles.backgroundContainer}>
+        <RippleGrid
+          enableRainbow={false}
+          gridColor="#ffffff"
+          rippleIntensity={0.05}
+          gridSize={10}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.8}
+        />
+      </div>
       <div className={`container ${styles.container}`}>
         <div className={styles.header}>
           <p className={styles.kicker}>3D PRODUCT SHOWCASE</p>
