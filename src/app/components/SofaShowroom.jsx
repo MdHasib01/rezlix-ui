@@ -49,8 +49,8 @@ export default function SofaShowroom() {
                   alt={m.name}
                   exposure="1.05"
                   shadowIntensity="1"
-                  cameraOrbit="35deg 70deg 3.2m"
-                  fieldOfView="35deg"
+                  cameraOrbit="auto auto auto"
+                  fieldOfView="auto"
                 />
               </div>
               <div className={styles.cardBody}>

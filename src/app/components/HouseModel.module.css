@@ -4,6 +4,8 @@
     radial-gradient(900px 500px at 20% 70%, rgba(167, 97, 255, 0.14), transparent 55%),
     linear-gradient(180deg, #07070b 0%, #05060a 100%);
   color: #eef2ff;
+  position: relative;
+  z-index: 10;
 }
 
 .container {

@@ -19,6 +19,13 @@ import SofaShowroom from "./components/SofaShowroom";
 import HouseModel from "./components/HouseModel";
 import SodaCanExperience from "./components/SodaCanExperience";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+if (typeof window !== "undefined") {
+  import("@google/model-viewer").catch((err) => {
+    console.error("Failed to load @google/model-viewer", err);
+  });
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,21 +103,7 @@ export default function Home() {
         <About />
         <Team />
         <Contact />
-
-        {/* Footer could be a section too or just a footer */}
-        <section className="footer">
-          <div
-            className="container"
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "transparent",
-              color: "var(--color-text)",
-            }}
-          >
-            <h2>REZLIX &copy; 2026</h2>
-          </div>
-        </section>
+        <Footer />
       </main>
     </>
   );

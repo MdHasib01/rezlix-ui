@@ -143,8 +143,7 @@ section.portfolio,
 section.services,
 section.about,
 section.team,
-section.contact,
-section.footer {
+section.contact {
   background:
     radial-gradient(900px 520px at 8% 12%, rgba(0, 245, 255, 0.16), transparent 55%),
     radial-gradient(900px 520px at 92% 72%, rgba(167, 97, 255, 0.16), transparent 55%),
