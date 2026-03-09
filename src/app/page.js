@@ -17,6 +17,7 @@ import About from "./components/About";
 import Team from "./components/Team";
 import SofaShowroom from "./components/SofaShowroom";
 import HouseModel from "./components/HouseModel";
+import SodaCanExperience from "./components/SodaCanExperience";
 import Contact from "./components/Contact";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +40,7 @@ export default function Home() {
 
   useGSAP(
     () => {
-      const sections = document.querySelectorAll("section");
+      const sections = containerRef.current.querySelectorAll("section");
 
       sections.forEach((section, index) => {
         if (section.dataset.skipTilt === "true") return;
@@ -62,7 +63,8 @@ export default function Home() {
         // Pin the section, except the last one?
         // Or pin all? Original code pinned all except last.
         // If I pin all except last, the last one just scrolls normally.
-        if (index === sections.length - 1) return;
+        if (index === sections.length - 1 || section.dataset.skipPin === "true")
+          return;
 
         ScrollTrigger.create({
           trigger: section,
@@ -84,6 +86,7 @@ export default function Home() {
       <Header />
 
       <main ref={containerRef}>
+        <SodaCanExperience />
         <Hero />
         <HorizontalShowcase />
         <SofaShowroom />

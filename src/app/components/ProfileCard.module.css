@@ -1,0 +1,178 @@
+.card {
+  width: 320px;
+  height: 440px;
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.behindGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 16px;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    var(--glow-color) 0%,
+    transparent var(--glow-size)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .behindGlow {
+  opacity: 1;
+}
+
+.grain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 16px;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  position: relative;
+  background-size: 150% 150%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.iconPattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  z-index: 1;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: -64px;
+  padding-top: 72px;
+  z-index: 0;
+}
+
+.miniAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.textInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 12px;
+  flex: 1;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.handle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.online {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.offline {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.mainInfo {
+  text-align: center;
+  margin-top: -20px; /* Pulls it up to overlap with userInfo */
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.name {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+.contactButton {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.contactButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

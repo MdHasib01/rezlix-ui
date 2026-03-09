@@ -23,7 +23,12 @@ const sofaModels = [
 
 export default function SofaShowroom() {
   return (
-    <section id="showroom" className={styles.section} data-skip-tilt="true">
+    <section
+      id="showroom"
+      className={styles.section}
+      data-skip-tilt="true"
+      data-skip-pin="true"
+    >
       <div className={`container ${styles.container}`}>
         <div className={styles.header}>
           <p className={styles.kicker}>3D PRODUCT SHOWCASE</p>

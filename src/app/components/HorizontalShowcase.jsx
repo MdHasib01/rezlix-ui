@@ -76,6 +76,7 @@ export default function HorizontalShowcase() {
       ref={sectionRef}
       className={styles.section}
       data-skip-tilt="true"
+      data-skip-pin="true"
     >
       <div className={styles.bgGrid} aria-hidden="true" />
       <div className={styles.viewport} ref={viewportRef}>
