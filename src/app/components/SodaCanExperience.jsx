@@ -22,7 +22,6 @@ export default function SodaCanExperience() {
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
   const animationFrameRef = useRef(null);
-  const scanSoundRef = useRef(null);
 
   const scrollData = useRef({
     currentScroll: 0,
@@ -80,7 +79,7 @@ export default function SodaCanExperience() {
     // 3. Load Model
     const loader = new GLTFLoader();
     loader.load(
-      "/can3d/josta.glb",
+      "/sofa_chair.glb",
       (gltf) => {
         const model = gltf.scene;
         modelRef.current = model;
@@ -88,9 +87,9 @@ export default function SodaCanExperience() {
         model.traverse((node) => {
           if (node.isMesh) {
             if (node.material) {
-              node.material.metalness = 0.3;
-              node.material.roughness = 0.4;
-              node.material.envMapIntensity = 1.5;
+              node.material.metalness = 0.5;
+              node.material.roughness = 0.2;
+              node.material.envMapIntensity = 1.0;
             }
             node.castShadow = true;
             node.receiveShadow = true;
@@ -104,7 +103,7 @@ export default function SodaCanExperience() {
 
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
-        camera.position.z = maxDim * 1.5;
+        camera.position.z = maxDim * 2.0; // Adjusted for architecture model
 
         model.scale.set(0, 0, 0);
 
@@ -113,7 +112,7 @@ export default function SodaCanExperience() {
           x: 1,
           y: 1,
           z: 1,
-          duration: 1,
+          duration: 1.5, // Slower for architecture
           ease: "power2.out",
         });
 
@@ -233,13 +232,6 @@ export default function SodaCanExperience() {
             scrollData.current.isFloating = false;
             modelRef.current.position.y = 0;
 
-            if (scanSoundRef.current) {
-              scanSoundRef.current.currentTime = 0;
-              scanSoundRef.current
-                .play()
-                .catch((e) => console.log("Audio play blocked"));
-            }
-
             gsap.to(modelRef.current.rotation, {
               y: modelRef.current.rotation.y + Math.PI * 2,
               duration: 1,
@@ -287,7 +279,6 @@ export default function SodaCanExperience() {
         />
       </div>
       <div ref={canvasRef} className={styles.modelCanvas} />
-      <audio ref={scanSoundRef} src="/can3d/scan-sfx.mp3" />
 
       <section
         className={`${styles.section} ${styles.hero}`}
@@ -295,14 +286,14 @@ export default function SodaCanExperience() {
         data-skip-tilt="true"
       >
         <h1>
-          Digital <br />
-          Evolution
+          Form <br />
+          &amp; Function
         </h1>
-        <h2>Transform Your Brand Identity</h2>
+        <h2>Architectural Visionaries</h2>
         <p>
-          Experience the next generation of digital product design. We craft
-          immersive experiences that blend innovation with functionality,
-          helping brands stand out in the digital landscape.
+          We create spaces that inspire, endure, and elevate the human
+          experience through visionary architectural design and sustainable
+          innovation.
         </p>
       </section>
 
@@ -312,21 +303,20 @@ export default function SodaCanExperience() {
         data-skip-tilt="true"
       >
         <div className={styles.tags}>
-          <p>Brand Strategy</p>
-          <p>User Experience</p>
-          <p>Digital Products</p>
-          <p>Innovation Lab</p>
+          <p>Residential</p>
+          <p>Commercial</p>
+          <p>Sustainable</p>
+          <p>Interior Design</p>
         </div>
         <h2>
-          We believe in creating digital products that not only look exceptional
-          but drive real business growth and user engagement through thoughtful
-          design and strategic innovation.
+          Designing the future of living through innovative architectural
+          solutions that harmonize with the environment.
         </h2>
         <p>
-          Our approach combines cutting-edge technology with human-centered
-          design principles. We transform complex challenges into seamless
-          digital experiences that resonate with your audience and elevate your
-          brand in the digital space.
+          Our approach combines artistic vision with technical precision to
+          bring your dream spaces to life. We transform complex architectural
+          challenges into timeless experiences that resonate with the human
+          spirit.
         </p>
       </section>
 
@@ -338,10 +328,10 @@ export default function SodaCanExperience() {
       >
         <div className={styles.scanInfo}>
           <div className={styles.productId}>
-            <h2>#2024</h2>
+            <h2>#ARCH-2024</h2>
           </div>
           <div className={styles.productDescription}>
-            <p>Transform Your Digital Identity</p>
+            <p>Visionary Architectural Design</p>
           </div>
         </div>
 
@@ -351,12 +341,8 @@ export default function SodaCanExperience() {
           style={{ transform: "scale(0)" }}
         ></div>
 
-        <div className={styles.barcode}>
-          <img src="/can3d/barcode.png" alt="barcode" />
-        </div>
-
         <div className={styles.purchased}>
-          <p>Innovation Verified</p>
+          <p>Design Verified</p>
         </div>
       </section>
 
@@ -366,9 +352,8 @@ export default function SodaCanExperience() {
         data-skip-tilt="true"
       >
         <h2>
-          Join the revolution where innovative experience meets strategic
-          thinking. Let's create products that don't just exist in digital space
-          - they define it.
+          Let's build something extraordinary together. Your vision, our
+          expertise, a timeless creation that defines the landscape.
         </h2>
       </section>
     </div>
