@@ -1,5 +1,5 @@
 "use client";
-
+import Tilt from "react-parallax-tilt";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -97,25 +97,27 @@ export default function HorizontalShowcase() {
 
         <div className={styles.track} ref={trackRef}>
           {panels.map((p) => (
-            <article key={p.title} className={styles.panel}>
-              <div className={styles.panelMedia}>
-                <img src={p.img} alt={p.title} loading="lazy" />
-                <div className={styles.panelOverlay} />
-              </div>
-              <div className={styles.panelBody}>
-                <span className={styles.tag}>{p.tag}</span>
-                <h3 className={styles.panelTitle}>{p.title}</h3>
-                <p className={styles.panelMeta}>{p.meta}</p>
-                <div className={styles.panelCtas}>
-                  <a className="interactive" href="#contact">
-                    Request a concept
-                  </a>
-                  <a className="interactive" href="#showroom">
-                    View 3D showroom
-                  </a>
+            <Tilt>
+              <article key={p.title} className={styles.panel}>
+                <div className={styles.panelMedia}>
+                  <img src={p.img} alt={p.title} loading="lazy" />
+                  <div className={styles.panelOverlay} />
                 </div>
-              </div>
-            </article>
+                <div className={styles.panelBody}>
+                  <span className={styles.tag}>{p.tag}</span>
+                  <h3 className={styles.panelTitle}>{p.title}</h3>
+                  <p className={styles.panelMeta}>{p.meta}</p>
+                  <div className={styles.panelCtas}>
+                    <a className="interactive" href="#contact">
+                      Request a concept
+                    </a>
+                    <a className="interactive" href="#showroom">
+                      View 3D showroom
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </Tilt>
           ))}
         </div>
 
