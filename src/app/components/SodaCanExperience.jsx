@@ -328,9 +328,9 @@ export default function SodaCanExperience() {
       <div className={styles.backgroundContainer}>
         <DotGrid
           dotSize={4}
-          gap={30}
-          baseColor="rgba(255, 255, 255, 0.1)"
-          activeColor="rgba(255, 255, 255, 0.3)"
+          gap={31}
+          baseColor="rgba(255, 255, 255, 0.4)"
+          activeColor="rgba(255, 255, 255, .3)"
         />
       </div>
       <div ref={canvasRef} className={styles.modelCanvas} />
